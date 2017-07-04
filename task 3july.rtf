@@ -1,0 +1,171 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.14393}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs48\lang9 1)  \ul\b\i Explain regular expression and quantifiers with example code\fs40\par
+\ulnone\fs32 --> Regular expression in java defines a pattern for a String. Regular Expression can be used to search, edit or manipulate text. Regular expression is not language specific but they 0differ slightly for each language. Regular Expression in java is most similar to Perl.\par
+\ul\fs40\par
+\ulnone\fs32 -->> Java Regex classes are present in java.util.regex package that contains three classes:\par
+\par
+1) . Pattern: Pattern object is the compiled version of the regular expression. Pattern class doesn\rquote t have any public constructor and we use it\rquote s public static method compile to create the pattern object by passing regular expression argument.\par
+2). Matcher: Matcher is the java regex engine object that matches the input String pattern with the pattern object created. Matcher class doesn\rquote t have any public constructor and we get a Matcher object using pattern object matcher method that takes the input String as argument. We then use matches method that returns boolean result based on input String matches the regex pattern or not.\par
+3). PatternSyntaxException: PatternSyntaxException is thrown if the regular expression syntax is not correct.\par
+--->> Java Regex example program.\par
+\par
+package com.journaldev.util;\par
+\par
+import java.util.regex.*;\par
+\par
+public class PatternExample \{\par
+\par
+\tab public static void main(String[] args) \{\par
+\tab\tab Pattern pattern = Pattern.compile(".xx.");\par
+\tab\tab Matcher matcher = pattern.matcher("MxxY");\par
+\tab\tab System.out.println("Input String matches regex - "+matcher.matches());\par
+\tab\tab // bad regular expression\par
+\tab\tab pattern = Pattern.compile("*xx*");\par
+\par
+\tab\}\par
+\par
+\}\par
+\par
+\ul\fs40 Output \ulnone : \par
+\fs32 Input String matches regex - true\par
+Exception in thread "main" java.util.regex.PatternSyntaxException: Dangling meta character '*' near index 0\par
+*xx*\par
+^\par
+\tab at java.util.regex.Pattern.error(Pattern.java:1924)\par
+\tab at java.util.regex.Pattern.sequence(Pattern.java:2090)\par
+\tab at java.util.regex.Pattern.expr(Pattern.java:1964)\par
+\tab at java.util.regex.Pattern.compile(Pattern.java:1665)\par
+\tab at java.util.regex.Pattern.(Pattern.java:1337)\par
+\tab at java.util.regex.Pattern.compile(Pattern.java:1022)\par
+\tab at com.journaldev.util.PatternExample.main(PatternExample.java:13)\par
+\par
+Quantifier is a mechanism that is helpful in binding variables together and creates a proposition along with semantics that are embedded.\par
+\par
+Types of Quantifiers and Rules\par
+\par
+There are two types of Quantifiers in Java. They are:\par
+\par
+\ul\fs40 -->> Type1: Existential Quantifiers\ulnone\par
+\fs32\par
+Quantifiers that reads \ldblquote $\rdblquote  as \ldblquote there exists\rdblquote .\par
+\ldblquote $x  P (x)\rdblquote  is true when an instance can be found which when plugged in for x, makes P (x) true.\par
+Like dis-junctioning over entire universe  - $x P (x )   \'db  P (x1) \'daP (x2) \'daP (x3) \'da \'85\par
+Type 2: Universal Quantifiers\par
+\par
+Quantifiers that reads \ldblquote "\rdblquote  as \ldblquote for all\rdblquote .\par
+\ldblquote "x  P (x)\rdblquote  is true when every instance of x makes P (x) true when plugged in.\par
+Like con-junctioning over entire universe - "x P (x )  \'db  P (x1) \'d9P (x2) \'d9 P (x3) \'d9 \'85\par
+\ul\fs40 Advantages of Quantifiers\par
+\ulnone\fs32\par
+Quantifiers can be parsed even though they are Multivariate. For example :While evaluating expressions such as  $x "y $z  P (x,y,z ), it is important to translate these propositions in sequential order in English : There is an x  such that for all y  there is a z such that P (x,y,z) holds.\par
+Quantifier\rquote s supports zero length matches which means that begin and end indices will have zero.\par
+Quantifiers are capable to capture groups and characters classed efficiently.\par
+\ul\fs40 Disadvantages of Quantifiers\par
+\ulnone\fs32\par
+Quantifiers are complex for any developers to implement in basic java application.\par
+Best Practices while using Quantifiers\par
+\par
+Each quantifier should be placed before a propositional function and finally binds with a semantic value to obtain a proposition.\par
+Rebinding of variables in Quantifiers is not allowed. For example, "x ( "x P (x) ) is completely wrong.\par
+Order or sequence of binding is very important in Quantifiers.\ul\fs40\par
+For example :\par
+\ulnone\fs32 import java.util.regex.*;\par
+import java.io.*;\par
+\par
+public class RegExHarness \{\par
+    public static void main(String args[]) throws IOException\{\par
+        \par
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\par
+        \par
+        Pattern pattern;\par
+        Matcher matcher;\par
+        \par
+        String regex;\par
+        String text;\par
+              \par
+        System.out.println("Enter the string");\par
+        text = br.readLine();\par
+        while(true)\{\par
+            try\{\par
+                System.out.println("Enter Regular Expression");\par
+                regex = br.readLine();\par
+                pattern = Pattern.compile(regex);\par
+\par
+                matcher = pattern.matcher(text);\par
+\par
+                while (matcher.find()) \{\par
+                    System.out.print("I found the text " + matcher.group());\par
+                    System.out.print(" starting at index " + matcher.start());\par
+                    System.out.println(" Ending at index " + matcher.end());\par
+                \}\par
+            \}\par
+            catch(IOException e)\{\par
+                System.out.println(e);\par
+            \}\par
+        \}     \par
+    \}\par
+\}\par
+\par
+\fs48 2). \tab\ul Explain DAO design pattern with example\fs40\par
+\par
+\ulnone\fs32 -->>  In short Data Access Object or DAO design pattern is a way to reduce coupling between Business logic and Persistence logic. Application business logic often needs domain objects which are persisted in either Database, File System or any other persistence storage. DAO pattern allows you to encapsulate code for performing CRUD operation against persistence from rest of application. Which means any change on persistence logic will not affect other layers of application which are already tested. DAO pattern enables an application to cope with any change in database provider or persistence technology.\par
+\ul\fs40 DAO design pattern Example\ulnone\fs32\par
+\par
+In the core of Data Access Object or DAO pattern is a Java interface, which defines a various method to perform CRUD operation e.g. Create, Read, Update, and Delete. Based on your application back-end technology you can create different implementation of this interface e.g. JdbcDAOImpl to connect database using JDBC, HibernateDAOImple to use hibernate or FileDAOImpl if you are using the File system for persistence. Service layer which uses this Data Access Object will use interface to interact with Data access layer. Here is how a typical DAO Interface looks like:\par
+\ul\fs40 For example :-\ulnone\fs32\par
+public interface AccountDAO\{\par
+   public boolean save(Account account);\par
+   public boolean update(Account account);\par
+   public boolean findByAccountNumber(int accountNumber);\par
+   public boolean delete(Account account);\par
+\par
+\}\par
+\par
+3). \ul\fs40 Write a note on how DAO helps in abstraction\par
+\par
+\ulnone\fs32  The DataAccessObject is the primary object of this pattern. The DataAccessObject \par
+\tab\tab abstracts the underlying data access implementation for the BusinessObject to\par
+\tab\tab enable transparent access to the data source. The BusinessObject also delegates \par
+\tab\tab data load and store operations to the DataAccessObject.\tab\par
+\fs40\par
+\par
+4). \ul Describe the different approaches of String processing.\par
+\par
+Character class\par
+\ulnone\fs32\tab\tab In the context of regular expressions, a character class is a set of characters enclosed \par
+\tab\tab within square brackets. It specifies the characters that will successfully match a single \par
+\tab\tab character from a given input string.\par
+\tab\tab Matcher class\par
+\tab\tab It implements MatchResult interface. It is a regex engine i.e. used to perform match\par
+\tab\tab operations on a character sequence.\par
+\tab\tab Pattern class\tab\par
+\par
+\tab\par
+\tab\tab It is the compiled version of a regular expression. It is used to define a pattern \par
+\tab\tab for the regex engine.\par
+\tab\par
+\tab\tab Predefined Character class\par
+\tab\tab any lowercase letter, any uppercase letter, the underscore character, or any digit.\par
+\tab\tab Use the predefined classes whenever possible. They make your code easier to read \par
+\tab\tab and eliminate errors introduced by malformed character classes.\par
+\par
+\par
+\tab\tab\ul\fs40 Quantifiers\ulnone\fs32\par
+\tab\tab Quantifiers allow you to specify the number of occurrences to match against. For \par
+\tab\tab convenience, the three sections of the Pattern API specification describing greedy, reluctant,\par
+\tab\tab At first glance it may appear that the quantifiers X?, X?? and X?+ do exactly the same thing, \par
+\tab\tab since they all promise to match "X, once or not at all". There are subtle implementation differences \par
+\tab\tab\par
+\ul\fs40\par
+Greedy Quantifires\par
+\ulnone\fs32\tab\tab The greedy quantifier .* to find "anything", zero or more times,followed by the letters "f" "o" "o". \par
+\tab\tab Because the quantifier is greedy, the .* portion of the expression first eats the entire input string.\par
+\tab\tab At this point, the overall expression cannot succeed, because the last three letters ("f" "o" "o") have \par
+\tab\tab already been consumed. So the matcher slowly backs off one letter at a time until the rightmost occurrence \par
+\tab\tab of "foo" has been regurgitated, at which point the match succeeds \ul\fs40\par
+\ulnone\fs32\par
+\ul\par
+\ulnone\par
+}
+ 
