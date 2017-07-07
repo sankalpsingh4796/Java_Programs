@@ -1,0 +1,135 @@
+
+
+1).Create a HTML page with table and color highlited header of table columns.
+
+ 
+>>
+    <html>
+    <head>
+    <title>
+    HTML TABLE
+    </title>
+    </head>
+    <body>
+    <h1>This is a sample table</h1>
+    <table style="width:100%">
+    <tr>
+    <th bgcolor="#FF0000">Firstname</th>
+    <th bgcolor="#00FF00">Lastname</th> 
+    <th bgcolor="#0000FF">Age</th>
+    </tr>
+
+    <tr>
+    <td>Phillip</td>
+    <td>Banks</td> 
+    <td>50</td>
+    </tr>
+
+    <tr>
+    <td>Vivienne</td>
+    <td>Banks</td> 
+    <td>17</td>
+    </tr>
+    
+    <tr>
+    <td>Will</td>
+    <td>Smith</td> 
+    <td>45</td>
+    </tr>
+    
+    <tr>
+    <td>Carlton</td>
+    <td>Banks</td> 
+    <td>17</td>
+    </tr>
+    
+    <tr>
+    <td>Hillary</td>
+    <td>Banks</td> 
+    <td>21</td>
+    </tr>
+    
+    <tr>
+    <td>Ashley</td>
+    <td>Banks</td> 
+    <td>9</td>
+    </tr>
+    </table>
+    </body>
+    </html>
+
+2). Create a HTML page with a registeration form of college.
+
+>>
+    <html>
+    <head> Registeration Form </head>
+    <body>
+    <h1 bgcolor="#FF0000"> WELCOME TO ABC COLLEGE </h1>
+ 
+    <form tag="New Admission">
+    <div align="center">
+    First Name *: <input type="firstname" name="firstname" /><br />
+    Last Name *: <input type="lastname" name="lastname" /><br />    
+    Sex *: <input type="sex" name="sex" /><br />
+    Email*: <input type="email" name="email" /><br />
+    DOB *: <input type="date of birth" name="dob" /><br />
+    Address *: <input type="address" name="add" /><br />
+    Phone no. *: <input type="phone no" name="ph" /><br />
+    Mobile no.*: <input type="mobile no" name="mob" /><br />
+    Course *: <input type="course" name="course" /><br />
+    <input type="submit" value="Submit" />
+    </div>
+    </form>
+    </body>
+    </html>
+    <p>Note: Please make sure your details are correct before submitting form and that all fields marked with * are completed!.</p>
+    </body>
+    </html>
+
+
+
+3) .Create a HTML page with internal stylesheet for applying style to all <p> elements of the page.
+     
+  >> <html>
+     <head>
+     Internal Stylesheet 
+     <style>
+     p    {color: blue;}
+     </style>
+     </head>
+     <body>
+
+     <h1>HTML</h1>
+     <p> HTML: It stands for HyperText Markup Language.<br/>  It is the standard markup language for creating Web pages.</br> HTML describes the structure of Web pages using markup.<br/> HTML elements are the building blocks of HTML pages. HTML elements are represented by tags.<br/>
+     </p>
+
+     </body>
+     </html>
+
+
+4).Create a HTML page with external stylesheet for applying style on all <img> elements of the page.
+
+
+>> the main html page
+     -------------------
+
+
+   <html>
+   <head>
+   <title>HTML External CSS</title>
+    <link rel="stylesheet" type="text/css" href="/html/style.css">
+     </head>
+     <body>
+     <img src="smiley.jpg">
+    </body>
+    </html>
+    
+
+    style.css page
+    ---------------
+
+    body {
+     img style="border:5px solid black"
+     img height="42" width="42"
+    }
+    
